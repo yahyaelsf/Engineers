@@ -16,11 +16,14 @@ class UsersImport implements ToModel , WithHeadingRow
     public function model(array $row)
     {
         return new TEngineer([
-            's_membership'    => $row['s_membership'],
             'i_id_number'    => $row['i_id_number'],
             's_name'     => $row['s_name'],
             's_address'     => $row['s_address'],
-            's_mobile' => $row['s_mobile']
+            's_mobile' => $row['s_mobile'],
+            'i_family'     => $row['i_family'],
+            's_type' => $row['s_type'],
+            's_value' => $row['s_value'],
+            's_donor' => $row['s_donor'],
         ]);
     }
 }

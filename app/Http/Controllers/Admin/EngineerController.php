@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\UsersExport;
 use App\Filters\ParentFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreEngineerRequest;
@@ -136,13 +137,7 @@ class EngineerController extends Controller
     public function datatable(ParentFilter $filters)
     {
         $engineer = $this->model->select('t_engineers.*')->filter($filters)->distinct();
-        return datatables($engineer)->addColumn('type_label', function($row){
-            return trans('general.' . strtolower($row->e_type)) == 'general.'? '-' :  trans('general.' . strtolower($row->e_type))  ;
-        })->addColumn('donor_label', function($row){
-            return trans('general.' . strtolower($row->e_donor)) == 'general.'? '-' :  trans('general.' . strtolower($row->e_donor));
-        })->addColumn('address_label', function($row){
-            return trans('general.' . strtolower($row->s_address));
-        })->addColumn('actions_column', function ($row) {
+        return datatables($engineer)->addColumn('actions_column', function ($row) {
             return view('admin.engineers.datatable.actions', compact('row'));
         })->rawColumns(['enabled_html', 'actions_column'])->make(true);
     }
@@ -152,5 +147,9 @@ class EngineerController extends Controller
         Excel::import(new UsersImport, $request->s_file);
 
         return redirect()->route('admin.engineers.index')->with('success', 'All good!');
+    }
+        public function export()
+    {
+        return Excel::download(new UsersExport, 'engineers.xlsx');
     }
 }

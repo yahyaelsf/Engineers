@@ -16,10 +16,6 @@
 
 
 
-                <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary">@lang('buttons.save')</button>
-                    <a href="{{ route('admin.news.index') }}" class="btn btn-secondary ml-2">@lang('buttons.close')</a>
-                </div>
 
             </form>
         </div>

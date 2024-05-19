@@ -22,10 +22,9 @@ class CreateTEngineersTable extends Migration
             $table->string('s_address')->nullable();
             $table->string('s_mobile')->nullable();
             $table->integer('i_family')->nullable();
-            $table->enum('e_type', ['food_parcel', 'healthy_package','vegetable_basket','cash_assistance',
-            'flour_bag','clothes' ,'engineer_sponsorship' , 'martyr_sponsorship'])->nullable();
+            $table->string('s_type')->nullable();
             $table->string('s_value')->nullable();
-            $table->enum('e_donor', ['mercy', 'orphanage','Eng_jerusalem','Harmony','besieged_italy','companions_association' ,'safety_malaysia' , 'international_society_engineers','international_yndicate_engineers'])->nullable();
+            $table->string('s_donor')->nullable();
             $table->timestamp('dt_created_date')->nullable();
             $table->timestamp('dt_modified_date')->nullable();
             $table->timestamp('dt_deleted_date')->nullable();

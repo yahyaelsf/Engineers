@@ -28,8 +28,8 @@ class StoreEngineerRequest extends BaseFormRequest
         $primaryKey = $this->get('pk_i_id');
         $rules = [
             's_name' =>'required',
-            'i_id_number' => 'required|unique:t_engineers,i_id_number,'. $primaryKey . ',pk_i_id',
-            's_mobile' => 'numeric|digits_between:10,14',
+            'i_id_number' => 'required',
+            's_mobile' => 'numeric',
             'i_family' => 'required|numeric',
             's_address' => 'required',
             's_value' => 'required',
